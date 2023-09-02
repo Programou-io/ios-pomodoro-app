@@ -44,6 +44,6 @@ If you want to know more about the project guidelines, you can access our [docum
 ## Instalation
 1. Clone the project `git clone https://github.com/Programou-io/ios-pomodoro-app.git`.
 2. Access the project folder named `ios-pomodoro-app`.
-3. Open the file with extension `.xpbproj`.
+3. Open the file with extension `.xcodeproj`.
 4. Click `cmd + r` to run the app or press the play button on the top of IDE
 
