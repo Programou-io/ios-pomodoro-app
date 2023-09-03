@@ -1,9 +1,9 @@
 import UIKit
 
-class   ViewController: UIViewController {
+class ViewController: UIViewController {
 
-        override func viewDidLoad() {
-        super.viewDidLoad()
-        }
-        
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+
 }
