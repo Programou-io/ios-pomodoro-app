@@ -103,10 +103,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B14A1ED72AA4C235004EC140 /* Build configuration list for PBXNativeTarget "Pom" */;
 			buildPhases = (
+				B17ED98F2AA4E6CC002DAF71 /* Swift format */,
 				B14A1EA92AA4C234004EC140 /* Sources */,
 				B14A1EAA2AA4C234004EC140 /* Frameworks */,
 				B14A1EAB2AA4C234004EC140 /* Resources */,
-				B17ED98F2AA4E6CC002DAF71 /* Swift format */,
 			);
 			buildRules = (
 			);
