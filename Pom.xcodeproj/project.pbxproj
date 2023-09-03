@@ -106,6 +106,7 @@
 				B14A1EA92AA4C234004EC140 /* Sources */,
 				B14A1EAA2AA4C234004EC140 /* Frameworks */,
 				B14A1EAB2AA4C234004EC140 /* Resources */,
+				B17ED98F2AA4E6CC002DAF71 /* Swift format */,
 			);
 			buildRules = (
 			);
@@ -190,6 +191,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B17ED98F2AA4E6CC002DAF71 /* Swift format */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift format";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ $OTHER_SWIFT_FLAGS == *\"-D ED_SKIP_SWIFT_FORMAT\"* ]]; then\n  exit 0;\nfi\n\nTools/swift-format -i -r \"$SRCROOT\" --configuration \".swift-format.json\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B14A1EA92AA4C234004EC140 /* Sources */ = {
