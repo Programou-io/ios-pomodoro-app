@@ -7,16 +7,18 @@ on:
     branches: [ 'develop', 'main' ]
 
 jobs:
-  build:
+  build-and-test:
+    
     runs-on: macos-latest
+
     steps:
-      - name: Checkout repository
+    - name: Checkout repository
       uses: actions/checkout@v3
         
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
-          
-      - name: Build and test
-        run: xcodebuild clean build test -project Pom.xcodeproj -scheme "Pom" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk iphonesimulator -destination "platform=iOS Simulator,OS=16.0,name=iPhone 14" ONLY_ACTIVE_ARCH=YES
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
+    - name: Build and test
+      run: xcodebuild clean build test -project Pom.xcodeproj -scheme "Pom" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk iphonesimulator -destination "platform=iOS Simulator,OS=16.0,name=iPhone 14" ONLY_ACTIVE_ARCH=YES
       
