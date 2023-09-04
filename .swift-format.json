@@ -45,6 +45,7 @@
         "UseShorthandTypeNames" : true,
         "UseSingleLinePropertyGetter" : true,
         "UseSynthesizedInitializer" : true,
+        "FileScopedDeclarationPrivacy": true, 
         "UseTripleSlashForDocumentationComments" : true,
         "ValidateDocumentationComments" : true
     },
