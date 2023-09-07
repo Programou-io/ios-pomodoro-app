@@ -14,9 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         _ scene: UIScene, willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        guard let windowScene = scene as? UIWindowScene else {
-            return
-        }
+        guard let windowScene = scene as? UIWindowScene else { return }
         setupWindow(window: UIWindow(windowScene: windowScene))
     }
 
@@ -41,8 +39,6 @@ extension SceneDelegate: AppIconHandlerDelegate {
     }
 
     func setAlternateIcon(iconName: String) {
-        DispatchQueue.main.async {
-            UIApplication.shared.setAlternateIconName(iconName)
-        }
+        DispatchQueue.main.async { UIApplication.shared.setAlternateIconName(iconName) }
     }
 }

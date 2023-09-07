@@ -3,33 +3,27 @@ import XCTest
 @testable import Pom
 
 final class AppIconHandlerSceneDelegateTests: XCTestCase {
-    func test_chooseIcon_shouldReturnNil_whenDeviceIsLightAndIconAlreadyLight()
-    {
+    func test_chooseIcon_shouldReturnNil_whenDeviceIsLightAndIconAlreadyLight() {
         let env = makeEnviroment()
-        let iconName = env.sut.chooseIcon(
-            deviceMode: .light, currentIcon: lightIcon())
+        let iconName = env.sut.chooseIcon(deviceMode: .light, currentIcon: lightIcon())
         XCTAssertNil(iconName)
     }
 
-    func test_chooseIcon_shouldReturnLightIcon_whenDeviceIsLightAndIconIsDark()
-    {
+    func test_chooseIcon_shouldReturnLightIcon_whenDeviceIsLightAndIconIsDark() {
         let env = makeEnviroment()
-        let iconName = env.sut.chooseIcon(
-            deviceMode: .light, currentIcon: darkIcon())
+        let iconName = env.sut.chooseIcon(deviceMode: .light, currentIcon: darkIcon())
         XCTAssertEqual(iconName, .lightIcon)
     }
 
     func test_chooseIcon_shouldReturnDarkIcon_whenDeviceIsDarkAndIconIsLight() {
         let env = makeEnviroment()
-        let iconName = env.sut.chooseIcon(
-            deviceMode: .dark, currentIcon: lightIcon())
+        let iconName = env.sut.chooseIcon(deviceMode: .dark, currentIcon: lightIcon())
         XCTAssertEqual(iconName, .darkIcon)
     }
 
     func test_chooseIcon_shouldReturnNil_whenDeviceIsDarkAndIconAlreadyDark() {
         let env = makeEnviroment()
-        let iconName = env.sut.chooseIcon(
-            deviceMode: .dark, currentIcon: darkIcon())
+        let iconName = env.sut.chooseIcon(deviceMode: .dark, currentIcon: darkIcon())
         XCTAssertNil(iconName)
     }
 
@@ -40,8 +34,7 @@ final class AppIconHandlerSceneDelegateTests: XCTestCase {
         XCTAssertEqual(iconName, .darkIcon)
     }
 
-    func test_chooseIcon_shouldReturnLight_whenDeviceIsLightAndIconIsUnknowned()
-    {
+    func test_chooseIcon_shouldReturnLight_whenDeviceIsLightAndIconIsUnknowned() {
         let env = makeEnviroment()
         let iconName = env.sut.chooseIcon(
             deviceMode: .light, currentIcon: "any invalid icon name")
@@ -65,8 +58,7 @@ final class AppIconHandlerSceneDelegateTests: XCTestCase {
     {
         let env = makeEnviroment()
         env.sut.didBecameActive()
-        XCTAssertEqual(
-            env.delegate.setAlternateIconReceived, [lightIcon()])
+        XCTAssertEqual(env.delegate.setAlternateIconReceived, [lightIcon()])
     }
 
     func
@@ -75,8 +67,7 @@ final class AppIconHandlerSceneDelegateTests: XCTestCase {
         let env = makeEnviroment()
         env.delegate.interfaceStyleStub = .dark
         env.sut.didBecameActive()
-        XCTAssertEqual(
-            env.delegate.setAlternateIconReceived, [darkIcon()])
+        XCTAssertEqual(env.delegate.setAlternateIconReceived, [darkIcon()])
     }
 
     func
@@ -99,9 +90,7 @@ final class AppIconHandlerSceneDelegateTests: XCTestCase {
         XCTAssertEqual(env.delegate.setAlternateIconReceived, [])
     }
 
-    func
-        test_didBecameActive_shouldSetIconAsLight_whenInterfaceIsLightModeAndIconIsnt()
-    {
+    func test_didBecameActive_shouldSetIconAsLight_whenInterfaceIsLightModeAndIconIsnt() {
         let env = makeEnviroment()
         env.delegate.getAlternateIconStub = darkIcon()
         env.delegate.interfaceStyleStub = .light
@@ -109,24 +98,20 @@ final class AppIconHandlerSceneDelegateTests: XCTestCase {
         XCTAssertEqual(env.delegate.setAlternateIconReceived, [lightIcon()])
     }
 
-    func
-        test_didBecameActive_shouldSetIconAsDark_whenInterfaceIsDarkModeAndIconIsnt()
-    {
+    func test_didBecameActive_shouldSetIconAsDark_whenInterfaceIsDarkModeAndIconIsnt() {
         let env = makeEnviroment()
         env.delegate.getAlternateIconStub = lightIcon()
         env.delegate.interfaceStyleStub = .dark
         env.sut.didBecameActive()
         XCTAssertEqual(env.delegate.setAlternateIconReceived, [darkIcon()])
     }
-}
 
-extension AppIconHandlerSceneDelegateTests {
-    fileprivate struct Enviroment {
+    private struct Enviroment {
         let delegate: AppIconHandlerDelegateSpy
         let sut: AppIconHandlerSceneDelegate
     }
 
-    fileprivate func makeEnviroment() -> Enviroment {
+    private func makeEnviroment() -> Enviroment {
         let delegate = AppIconHandlerDelegateSpy()
         let sut = AppIconHandlerSceneDelegate()
         sut.delegate = delegate
@@ -137,17 +122,12 @@ extension AppIconHandlerSceneDelegateTests {
         return Enviroment(delegate: delegate, sut: sut)
     }
 
-    fileprivate func lightIcon() -> String {
-        AppIcon.lightIcon.rawValue
-    }
+    private func lightIcon() -> String { AppIcon.lightIcon.rawValue }
 
-    fileprivate func darkIcon() -> String {
-        AppIcon.darkIcon.rawValue
-    }
+    private func darkIcon() -> String { AppIcon.darkIcon.rawValue }
 
-    fileprivate func trackMemmoryLeak(
-        _ instance: AnyObject, file: StaticString = #filePath,
-        line: UInt = #line
+    private func trackMemmoryLeak(
+        _ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line
     ) {
         addTeardownBlock { [weak instance] in
             XCTAssertNil(
@@ -156,8 +136,8 @@ extension AppIconHandlerSceneDelegateTests {
                 file: file, line: line)
         }
     }
-
-    fileprivate final class AppIconHandlerDelegateSpy: AppIconHandlerDelegate {
+    
+    private final class AppIconHandlerDelegateSpy: AppIconHandlerDelegate {
         private(set) var interfaceStyleCallCount = 0
         var interfaceStyleStub: UIUserInterfaceStyle = .light
         var interfaceStyle: UIUserInterfaceStyle {
