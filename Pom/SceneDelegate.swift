@@ -8,7 +8,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         _ scene: UIScene, willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        setupWindow(window: UIWindow(frame: UIScreen.main.bounds))
+        guard let windowScene = scene as? UIWindowScene else {
+            return
+        }
+        setupWindow(window: UIWindow(windowScene: windowScene))
     }
 
     func setupWindow(window: UIWindow) {
