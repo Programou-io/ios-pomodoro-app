@@ -32,12 +32,10 @@ final class SceneDelegateTests: XCTestCase {
     }
 }
 
-extension SceneDelegateTests {
-    fileprivate final class WindowSpy: UIWindow {
-        private(set) var makeKeyAndVisibleCallCount = 0
+final class WindowSpy: UIWindow {
+    private(set) var makeKeyAndVisibleCallCount = 0
 
-        override func makeKeyAndVisible() {
-            makeKeyAndVisibleCallCount += 1
-        }
+    override func makeKeyAndVisible() {
+        makeKeyAndVisibleCallCount += 1
     }
 }
