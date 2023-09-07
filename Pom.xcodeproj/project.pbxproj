@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10AF1172AA94AF4004FE42B /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AF1162AA94AF4004FE42B /* SceneDelegateTests.swift */; };
 		B14A1EB12AA4C234004EC140 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A1EB02AA4C234004EC140 /* AppDelegate.swift */; };
 		B14A1EB32AA4C234004EC140 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A1EB22AA4C234004EC140 /* SceneDelegate.swift */; };
 		B14A1EB52AA4C234004EC140 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A1EB42AA4C234004EC140 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B10AF1162AA94AF4004FE42B /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		B14A1EAD2AA4C234004EC140 /* Pom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14A1EB02AA4C234004EC140 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B14A1EB22AA4C234004EC140 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				B14A1EC72AA4C235004EC140 /* PomTests.swift */,
+				B10AF1162AA94AF4004FE42B /* SceneDelegateTests.swift */,
 			);
 			path = PomTests;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B14A1EC82AA4C235004EC140 /* PomTests.swift in Sources */,
+				B10AF1172AA94AF4004FE42B /* SceneDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
