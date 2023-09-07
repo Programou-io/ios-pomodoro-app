@@ -7,7 +7,7 @@ protocol AppIconHandlerDelegate: AnyObject {
     func setAlternateIcon(iconName: String)
 }
 
-final class AppIconHandlerSceneDelegate: NSObject, UISceneDelegate {
+final class AppIconHandlerSceneDelegate: NSObject, UIWindowSceneDelegate {
     weak var delegate: AppIconHandlerDelegate?
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -17,7 +17,8 @@ final class AppIconHandlerSceneDelegate: NSObject, UISceneDelegate {
     func didBecameActive() {
         guard let delegate else { return }
 
-        guard let icon = chooseIcon(
+        guard
+            let icon = chooseIcon(
                 deviceMode: delegate.interfaceStyle,
                 currentIcon: delegate.getAlternateIcon())
         else { return }
