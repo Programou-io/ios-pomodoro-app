@@ -19,6 +19,7 @@
 		B14A1EC82AA4C235004EC140 /* PomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A1EC72AA4C235004EC140 /* PomTests.swift */; };
 		B18D8CC92AAE101000317B5C /* PomodoroPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CC82AAE101000317B5C /* PomodoroPhase.swift */; };
 		B18D8CCC2AAE103800317B5C /* PomodoroPhaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CCB2AAE103800317B5C /* PomodoroPhaseTests.swift */; };
+		B18D8CCE2AAE12D900317B5C /* PomorodoCycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CCD2AAE12D900317B5C /* PomorodoCycleTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		B14A1EE02AA4C3C4004EC140 /* Pom.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pom.xctestplan; sourceTree = "<group>"; };
 		B18D8CC82AAE101000317B5C /* PomodoroPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroPhase.swift; sourceTree = "<group>"; };
 		B18D8CCB2AAE103800317B5C /* PomodoroPhaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroPhaseTests.swift; sourceTree = "<group>"; };
+		B18D8CCD2AAE12D900317B5C /* PomorodoCycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomorodoCycleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				B18D8CCB2AAE103800317B5C /* PomodoroPhaseTests.swift */,
+				B18D8CCD2AAE12D900317B5C /* PomorodoCycleTests.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			files = (
 				B14A1EC82AA4C235004EC140 /* PomTests.swift in Sources */,
 				B10AF1172AA94AF4004FE42B /* SceneDelegateTests.swift in Sources */,
+				B18D8CCE2AAE12D900317B5C /* PomorodoCycleTests.swift in Sources */,
 				B18D8CCC2AAE103800317B5C /* PomodoroPhaseTests.swift in Sources */,
 				B10AF1192AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift in Sources */,
 			);
