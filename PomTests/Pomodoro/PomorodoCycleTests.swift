@@ -365,17 +365,17 @@ final class PomorodoCycleTests: XCTestCase {
 
 extension PomorodoCycle {
     @discardableResult
-    func spendFocusTime() -> Pomodoro? {
+    func spendFocusTime() -> PomodoroData? {
         trigger(timeSpend: 1500)
     }
 
     @discardableResult
-    func spendShortBreak() -> Pomodoro? {
+    func spendShortBreak() -> PomodoroData? {
         trigger(timeSpend: 300)
     }
 
     @discardableResult
-    func spendLongBreak() -> Pomodoro? {
+    func spendLongBreak() -> PomodoroData? {
         trigger(timeSpend: 900)
     }
 

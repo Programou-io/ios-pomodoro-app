@@ -3,11 +3,11 @@ class PomorodoCycle {
     private var cycles = 0
     private var pomodoros = 0
 
-    func trigger(timeSpend: Double) -> Pomodoro? {
+    func trigger(timeSpend: Double) -> PomodoroData? {
         let isFinished = timeSpend >= phase.duration
         guard isFinished else { return nil }
         phaseHandler()
-        return Pomodoro(phase: phase, cycles: cycles, pomodoros: pomodoros)
+        return PomodoroData(phase: phase, cycles: cycles, pomodoros: pomodoros)
     }
 
     private func phaseHandler() {
