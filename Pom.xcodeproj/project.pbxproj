@@ -17,6 +17,8 @@
 		B14A1EBA2AA4C235004EC140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B14A1EB92AA4C235004EC140 /* Assets.xcassets */; };
 		B14A1EBD2AA4C235004EC140 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B14A1EBB2AA4C235004EC140 /* LaunchScreen.storyboard */; };
 		B14A1EC82AA4C235004EC140 /* PomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14A1EC72AA4C235004EC140 /* PomTests.swift */; };
+		B18D8CC92AAE101000317B5C /* PomodoroPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CC82AAE101000317B5C /* PomodoroPhase.swift */; };
+		B18D8CCC2AAE103800317B5C /* PomodoroPhaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CCB2AAE103800317B5C /* PomodoroPhaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		B14A1EC32AA4C235004EC140 /* PomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14A1EC72AA4C235004EC140 /* PomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomTests.swift; sourceTree = "<group>"; };
 		B14A1EE02AA4C3C4004EC140 /* Pom.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pom.xctestplan; sourceTree = "<group>"; };
+		B18D8CC82AAE101000317B5C /* PomodoroPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroPhase.swift; sourceTree = "<group>"; };
+		B18D8CCB2AAE103800317B5C /* PomodoroPhaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroPhaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 		B14A1EAF2AA4C234004EC140 /* Pom */ = {
 			isa = PBXGroup;
 			children = (
+				B18D8CC72AAE0FF600317B5C /* Pomodoro */,
 				B14A1EB02AA4C234004EC140 /* AppDelegate.swift */,
 				B14A1EB22AA4C234004EC140 /* SceneDelegate.swift */,
 				B14A1EB42AA4C234004EC140 /* ViewController.swift */,
@@ -101,11 +106,28 @@
 		B14A1EC62AA4C235004EC140 /* PomTests */ = {
 			isa = PBXGroup;
 			children = (
+				B18D8CCA2AAE102900317B5C /* Pomodoro */,
 				B14A1EC72AA4C235004EC140 /* PomTests.swift */,
 				B10AF1162AA94AF4004FE42B /* SceneDelegateTests.swift */,
 				B10AF1182AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift */,
 			);
 			path = PomTests;
+			sourceTree = "<group>";
+		};
+		B18D8CC72AAE0FF600317B5C /* Pomodoro */ = {
+			isa = PBXGroup;
+			children = (
+				B18D8CC82AAE101000317B5C /* PomodoroPhase.swift */,
+			);
+			path = Pomodoro;
+			sourceTree = "<group>";
+		};
+		B18D8CCA2AAE102900317B5C /* Pomodoro */ = {
+			isa = PBXGroup;
+			children = (
+				B18D8CCB2AAE103800317B5C /* PomodoroPhaseTests.swift */,
+			);
+			path = Pomodoro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +258,7 @@
 				B10AF11B2AA96721004FE42B /* AppIcon.swift in Sources */,
 				B10AF11D2AA96735004FE42B /* AppIconHandlerSceneDelegate.swift in Sources */,
 				B14A1EB32AA4C234004EC140 /* SceneDelegate.swift in Sources */,
+				B18D8CC92AAE101000317B5C /* PomodoroPhase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +268,7 @@
 			files = (
 				B14A1EC82AA4C235004EC140 /* PomTests.swift in Sources */,
 				B10AF1172AA94AF4004FE42B /* SceneDelegateTests.swift in Sources */,
+				B18D8CCC2AAE103800317B5C /* PomodoroPhaseTests.swift in Sources */,
 				B10AF1192AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
