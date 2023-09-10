@@ -136,7 +136,6 @@ final class AppIconHandlerSceneDelegateTests: XCTestCase {
                 file: file, line: line)
         }
     }
-    
     private final class AppIconHandlerDelegateSpy: AppIconHandlerDelegate {
         private(set) var interfaceStyleCallCount = 0
         var interfaceStyleStub: UIUserInterfaceStyle = .light

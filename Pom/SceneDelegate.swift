@@ -20,7 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func setupWindow(window: UIWindow) {
         self.window = window
-        window.rootViewController = ViewController()
+        let pomodoro = Pomodoro()
+        let viewModel = PomodoroViewModel(pomodoro: pomodoro)
+        let controller = PomodoroViewController(viewModel: viewModel)
+        pomodoro.delegate = viewModel
+        let navigation = UINavigationController(rootViewController: controller)
+        window.rootViewController = navigation
         window.makeKeyAndVisible()
     }
 
