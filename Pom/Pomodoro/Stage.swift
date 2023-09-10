@@ -1,5 +1,5 @@
-enum Stage {
-    case focus
-    case shortBreak
-    case longBreak
-}
+//enum Stage {
+//    case focus
+//    case shortBreak
+//    case longBreak
+//}

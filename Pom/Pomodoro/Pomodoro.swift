@@ -2,60 +2,74 @@ import Foundation
 
 protocol PomodoroDelegate: AnyObject {
     func timeDidChange(time: TimeInterval)
-    func seasonDidChange(season: Stage)
+    func seasonDidChange(season: SeasonData)
+}
+
+protocol Time {
+    func setInterval(interval: TimeInterval, execute: @escaping Bind)
+    func remove()
+}
+
+final class TimerAdapter: Time {
+    private var timer = Timer()
+    func setInterval(interval: TimeInterval, execute: @escaping Bind) {
+        timer = Timer.scheduledTimer(
+            withTimeInterval: interval,
+            repeats: true,
+            block: { [execute] _ in
+                execute()
+            }
+        )
+    }
+    func remove() {
+        timer.invalidate()
+    }
 }
 
 final class Pomodoro {
-    private(set) var pomodoros = 0
-    private(set) var cycles = 0
-    private lazy var cycle = makeFocusCycle()
     weak var delegate: PomodoroDelegate?
+
+    private var timer: Time
+    private var timeSpend = TimeInterval(0)
+    private var cycle = Cycle()
+
+    init(timer: Time) {
+        self.timer = timer
+    }
+
     func startTimer() {
-        cycle.setTimer { [weak delegate] time in delegate?.timeDidChange(time: time) }
-    }
-    private func makeFocusCycle() -> Cycle {
-        Cycle(
-            duration: 10, onCancel: { [weak self] in self?.didFinish() },
-            onFinish: { [weak self] in self?.didFinish() })
-    }
-    private func makeShortBreakCycle() -> Cycle {
-        Cycle(
-            duration: 5,
-            onCancel: { [weak self] in guard let self else { return }
-                cycles += 1
-                self.setSeason(.focus)
-            },
-            onFinish: { [weak self] in guard let self else { return }
-                cycles += 1
-                self.setSeason(.focus)
-            })
-    }
-    private func makeLongBreakCycle() -> Cycle {
-        Cycle(
-            duration: 8,
-            onCancel: { [weak self] in guard let self else { return }
-                pomodoros += 1
-                cycles = 0
-                setSeason(.focus)
-            },
-            onFinish: { [weak self] in guard let self else { return }
-                pomodoros += 1
-                cycles = 0
-                setSeason(.focus)
-            })
-    }
-    private func didFinish() {
-        if cycles > 3 { setSeason(.longBreak) } else { setSeason(.shortBreak) }
-    }
-    private func setSeason(_ season: Stage) {
-        setCycle(by: season)
-        delegate?.seasonDidChange(season: season)
-    }
-    private func setCycle(by season: Stage) {
-        switch season {
-        case .focus: cycle = makeFocusCycle()
-        case .shortBreak: cycle = makeShortBreakCycle()
-        case .longBreak: cycle = makeLongBreakCycle()
+        timeSpend = 0
+        timer.remove()
+        let pomodoro = cycle.interrupt()
+        let data = SeasonData(
+            season: pomodoro.phase,
+            cycles: pomodoro.cycles,
+            pomodoros: pomodoro.pomodoros
+        )
+        delegate?.seasonDidChange(season: data)
+        timer.setInterval(interval: 1) { [weak self] in
+            guard let self else { return }
+            timeSpend += 1
+
+            guard let pomodoro = cycle.trigger(timeSpend: timeSpend) else {
+                delegate?.timeDidChange(time: timeSpend)
+                return
+            }
+
+            timeSpend = 0
+            timer.remove()
+            let data = SeasonData(
+                season: pomodoro.phase,
+                cycles: pomodoro.cycles,
+                pomodoros: pomodoro.pomodoros
+            )
+            delegate?.seasonDidChange(season: data)
         }
     }
+}
+
+struct SeasonData {
+    let season: Stage
+    let cycles: Int
+    let pomodoros: Int
 }

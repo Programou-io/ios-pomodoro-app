@@ -44,8 +44,10 @@ final class PomodoroView: UIView {
         setupHierarcy()
         setupConstraints()
         startButton.addTarget(
-            self, action: #selector(startButtonActionHandler),
-            for: .primaryActionTriggered)
+            self,
+            action: #selector(startButtonActionHandler),
+            for: .primaryActionTriggered
+        )
     }
     @available(*, unavailable) required init?(coder: NSCoder) { nil }
     func setupSeasonStyle(color: UIColor) {
@@ -72,9 +74,13 @@ final class PomodoroView: UIView {
             startButton.heightAnchor.constraint(equalToConstant: 40),
             mainVerticalStack.centerYAnchor.constraint(equalTo: centerYAnchor),
             mainVerticalStack.leadingAnchor.constraint(
-                equalTo: leadingAnchor, constant: 16),
+                equalTo: leadingAnchor,
+                constant: 16
+            ),
             mainVerticalStack.trailingAnchor.constraint(
-                equalTo: trailingAnchor, constant: -16),
+                equalTo: trailingAnchor,
+                constant: -16
+            ),
         ])
     }
     @objc private func startButtonActionHandler() { onClick?() }

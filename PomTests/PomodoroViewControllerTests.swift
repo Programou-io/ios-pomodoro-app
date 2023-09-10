@@ -14,26 +14,45 @@ final class PomodoroViewControllerTests: XCTestCase {
         viewModel.periods = "1/4"
         viewModel.pomodoros = "🍅"
         assertSnapshot(
-            of: sut, as: .image, named: named, record: recording,
-            testName: "Default\(styleMode)")
+            of: sut,
+            as: .image,
+            named: named,
+            record: recording,
+            testName: "Default\(styleMode)"
+        )
         viewModel.onPhaseChange?(.focus)
         viewModel.onDetailsChange?(
-            .init(time: "Any time", buttonTitle: "any button title"))
+            .init(time: "Any time", buttonTitle: "any button title")
+        )
         assertSnapshot(
-            of: sut, as: .image, named: named, record: recording,
-            testName: "Focus\(styleMode)")
+            of: sut,
+            as: .image,
+            named: named,
+            record: recording,
+            testName: "Focus\(styleMode)"
+        )
         viewModel.onPhaseChange?(.focus)
         viewModel.onDetailsChange?(
-            .init(time: "Any time", buttonTitle: "any button title"))
+            .init(time: "Any time", buttonTitle: "any button title")
+        )
         assertSnapshot(
-            of: sut, as: .image, named: named, record: recording,
-            testName: "LongBreak\(styleMode)")
+            of: sut,
+            as: .image,
+            named: named,
+            record: recording,
+            testName: "LongBreak\(styleMode)"
+        )
         viewModel.onPhaseChange?(.shortBreak)
         viewModel.onDetailsChange?(
-            .init(time: "Any time", buttonTitle: "any button title"))
+            .init(time: "Any time", buttonTitle: "any button title")
+        )
         assertSnapshot(
-            of: sut, as: .image, named: named, record: recording,
-            testName: "ShortBreak\(styleMode)")
+            of: sut,
+            as: .image,
+            named: named,
+            record: recording,
+            testName: "ShortBreak\(styleMode)"
+        )
     }
     func test2() {
         let named = "PomodoroViewController"
@@ -46,26 +65,45 @@ final class PomodoroViewControllerTests: XCTestCase {
         viewModel.periods = "1/4"
         viewModel.pomodoros = "🍅"
         assertSnapshot(
-            of: sut, as: .image, named: named, record: recording,
-            testName: "Default\(styleMode)")
+            of: sut,
+            as: .image,
+            named: named,
+            record: recording,
+            testName: "Default\(styleMode)"
+        )
         viewModel.onPhaseChange?(.focus)
         viewModel.onDetailsChange?(
-            .init(time: "Any time", buttonTitle: "any button title"))
+            .init(time: "Any time", buttonTitle: "any button title")
+        )
         assertSnapshot(
-            of: sut, as: .image, named: named, record: recording,
-            testName: "Focus\(styleMode)")
+            of: sut,
+            as: .image,
+            named: named,
+            record: recording,
+            testName: "Focus\(styleMode)"
+        )
         viewModel.onPhaseChange?(.focus)
         viewModel.onDetailsChange?(
-            .init(time: "Any time", buttonTitle: "any button title"))
+            .init(time: "Any time", buttonTitle: "any button title")
+        )
         assertSnapshot(
-            of: sut, as: .image, named: named, record: recording,
-            testName: "LongBreak\(styleMode)")
+            of: sut,
+            as: .image,
+            named: named,
+            record: recording,
+            testName: "LongBreak\(styleMode)"
+        )
         viewModel.onPhaseChange?(.shortBreak)
         viewModel.onDetailsChange?(
-            .init(time: "Any time", buttonTitle: "any button title"))
+            .init(time: "Any time", buttonTitle: "any button title")
+        )
         assertSnapshot(
-            of: sut, as: .image, named: named, record: recording,
-            testName: "ShortBreak\(styleMode)")
+            of: sut,
+            as: .image,
+            named: named,
+            record: recording,
+            testName: "ShortBreak\(styleMode)"
+        )
     }
     private class PomodoroViewModelStub: PomodoroViewModeling {
         var onPhaseChange: BindWith<Stage>?

@@ -4,7 +4,6 @@ struct PomodoroPhaseViewData {
     let time: String
     let buttonTitle: String
 }
-
 protocol PomodoroViewModeling {
     var onTimeChange: BindWith<String>? { get set }
     var onPhaseChange: BindWith<Stage>? { get set }
@@ -13,22 +12,21 @@ protocol PomodoroViewModeling {
     var pomodoros: String { get }
     func didStart()
 }
-
 class PomodoroViewModel: PomodoroViewModeling {
-    private let pomodoro: Pomodoro
+    private var pomodoro: Pomodoro
     var onTimeChange: BindWith<String>?
     var onPhaseChange: BindWith<Stage>?
     var onDetailsChange: BindWith<PomodoroPhaseViewData>?
-    var periods: String { "\(pomodoro.cycles)/4" }
-    var pomodoros: String { String(repeating: "🍅", count: pomodoro.pomodoros) }
+    private(set) var periods = String()
+    private(set) var pomodoros = String()
     init(pomodoro: Pomodoro) { self.pomodoro = pomodoro }
     func didStart() {
         onDetailsChange?(
-            PomodoroPhaseViewData(time: "00:00:00", buttonTitle: "interromper"))
+            PomodoroPhaseViewData(time: "00:00:00", buttonTitle: "interromper")
+        )
         pomodoro.startTimer()
     }
 }
-
 extension PomodoroViewModel: PomodoroDelegate {
     func timeDidChange(time: TimeInterval) {
         let hours = Int(time) / 3600
@@ -38,19 +36,25 @@ extension PomodoroViewModel: PomodoroDelegate {
         let timeViewData = String(format: format, hours, minutes, seconds)
         onTimeChange?(timeViewData)
     }
-    func seasonDidChange(season: Stage) {
-        onPhaseChange?(season)
-        switch season {
+    func seasonDidChange(season: SeasonData) {
+        onPhaseChange?(season.season)
+        periods = "\(season.cycles)/4"
+        pomodoros = String(repeating: "🍅", count: season.pomodoros)
+        switch season.season {
         case .focus:
             let vd = PomodoroPhaseViewData(time: "00:25:00", buttonTitle: "iniciar foco")
             onDetailsChange?(vd)
         case .shortBreak:
             let vd = PomodoroPhaseViewData(
-                time: "00:05:00", buttonTitle: "iniciar pausa curta")
+                time: "00:05:00",
+                buttonTitle: "iniciar pausa curta"
+            )
             onDetailsChange?(vd)
         case .longBreak:
             let vd = PomodoroPhaseViewData(
-                time: "00:15:00", buttonTitle: "iniciar pausa longa")
+                time: "00:15:00",
+                buttonTitle: "iniciar pausa longa"
+            )
             onDetailsChange?(vd)
         }
     }
