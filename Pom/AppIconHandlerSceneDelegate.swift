@@ -17,7 +17,8 @@ final class AppIconHandlerSceneDelegate: NSObject, UIWindowSceneDelegate {
         guard
             let icon = chooseIcon(
                 deviceMode: delegate.interfaceStyle,
-                currentIcon: delegate.getAlternateIcon())
+                currentIcon: delegate.getAlternateIcon()
+            )
         else { return }
 
         delegate.setAlternateIcon(iconName: icon.rawValue)
