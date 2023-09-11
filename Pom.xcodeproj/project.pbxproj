@@ -34,6 +34,11 @@
 		B18D8CEB2AAEB14800317B5C /* PomodoroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CEA2AAEB14800317B5C /* PomodoroViewModel.swift */; };
 		B18D8CEE2AAF1A9100317B5C /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B18D8CED2AAF1A9100317B5C /* SnapshotTesting */; };
 		B18D8CF02AAF1EFB00317B5C /* PomodoroViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CEF2AAF1EFB00317B5C /* PomodoroViewControllerTests.swift */; };
+		B18D8CF42AAF58E000317B5C /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CF32AAF58E000317B5C /* UIColor+Extensions.swift */; };
+		B18D8CF62AAF590000317B5C /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CF52AAF590000317B5C /* UIStackView+Extensions.swift */; };
+		B18D8CF82AAF591600317B5C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CF72AAF591600317B5C /* UIView+Extensions.swift */; };
+		B18D8CFA2AAF593A00317B5C /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CF92AAF593A00317B5C /* ViewCode.swift */; };
+		B18D8CFC2AAF5A1100317B5C /* CircularProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CFB2AAF5A1100317B5C /* CircularProgressIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +82,11 @@
 		B18D8CE82AAEB12F00317B5C /* PomodoroViewDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroViewDatas.swift; sourceTree = "<group>"; };
 		B18D8CEA2AAEB14800317B5C /* PomodoroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroViewModel.swift; sourceTree = "<group>"; };
 		B18D8CEF2AAF1EFB00317B5C /* PomodoroViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroViewControllerTests.swift; sourceTree = "<group>"; };
+		B18D8CF32AAF58E000317B5C /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		B18D8CF52AAF590000317B5C /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		B18D8CF72AAF591600317B5C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		B18D8CF92AAF593A00317B5C /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
+		B18D8CFB2AAF5A1100317B5C /* CircularProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +130,7 @@
 		B14A1EAF2AA4C234004EC140 /* Pom */ = {
 			isa = PBXGroup;
 			children = (
+				B18D8CF22AAF58D200317B5C /* Helpers */,
 				B18D8CC72AAE0FF600317B5C /* Pomodoro */,
 				B14A1EB02AA4C234004EC140 /* AppDelegate.swift */,
 				B14A1EB22AA4C234004EC140 /* SceneDelegate.swift */,
@@ -129,6 +140,7 @@
 				B10AF11A2AA96721004FE42B /* AppIcon.swift */,
 				B10AF11C2AA96735004FE42B /* AppIconHandlerSceneDelegate.swift */,
 				B18D8CE42AAEB0D700317B5C /* WeakProxy.swift */,
+				B18D8CF92AAF593A00317B5C /* ViewCode.swift */,
 			);
 			path = Pom;
 			sourceTree = "<group>";
@@ -157,6 +169,7 @@
 				B18D8CE62AAEB11000317B5C /* WeakProxy+PomodoroDelegate.swift */,
 				B18D8CE82AAEB12F00317B5C /* PomodoroViewDatas.swift */,
 				B18D8CEA2AAEB14800317B5C /* PomodoroViewModel.swift */,
+				B18D8CFB2AAF5A1100317B5C /* CircularProgressIndicator.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -178,6 +191,16 @@
 			children = (
 				B18D8CD62AAE895600317B5C /* XCTestCase+Extensions.swift */,
 				B18D8CE22AAEA91000317B5C /* Fixtures.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B18D8CF22AAF58D200317B5C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B18D8CF32AAF58E000317B5C /* UIColor+Extensions.swift */,
+				B18D8CF52AAF590000317B5C /* UIStackView+Extensions.swift */,
+				B18D8CF72AAF591600317B5C /* UIView+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -316,12 +339,17 @@
 				B18D8CE72AAEB11000317B5C /* WeakProxy+PomodoroDelegate.swift in Sources */,
 				B18D8CDF2AAE959400317B5C /* PomodoroTimer.swift in Sources */,
 				B14A1EB52AA4C234004EC140 /* PomodoroViewController.swift in Sources */,
+				B18D8CFC2AAF5A1100317B5C /* CircularProgressIndicator.swift in Sources */,
 				B18D8CEB2AAEB14800317B5C /* PomodoroViewModel.swift in Sources */,
 				B18D8CD92AAE955E00317B5C /* Pomodoro.swift in Sources */,
+				B18D8CF62AAF590000317B5C /* UIStackView+Extensions.swift in Sources */,
 				B14A1EB12AA4C234004EC140 /* AppDelegate.swift in Sources */,
 				B18D8CDB2AAE957000317B5C /* PhaseData.swift in Sources */,
 				B10AF11B2AA96721004FE42B /* AppIcon.swift in Sources */,
 				B18D8CD02AAE26D800317B5C /* PomodoroData.swift in Sources */,
+				B18D8CF82AAF591600317B5C /* UIView+Extensions.swift in Sources */,
+				B18D8CFA2AAF593A00317B5C /* ViewCode.swift in Sources */,
+				B18D8CF42AAF58E000317B5C /* UIColor+Extensions.swift in Sources */,
 				B10AF11D2AA96735004FE42B /* AppIconHandlerSceneDelegate.swift in Sources */,
 				B18D8CD22AAE26EC00317B5C /* PomorodoCycle.swift in Sources */,
 				B14A1EB32AA4C234004EC140 /* SceneDelegate.swift in Sources */,

@@ -1,45 +1,28 @@
 import UIKit
 
-extension UIColor {
-    static var focus: UIColor {
-        UIColor(named: "FocusColor")!
-    }
-
-    static var shortBreak: UIColor {
-        UIColor(named: "ShortBreakColor")!
-    }
-
-    static var longBreak: UIColor {
-        UIColor(named: "LongBreakColor")!
-    }
-
-    static var background: UIColor {
-        UIColor(named: "background")!
-    }
-}
-
-extension UIView {
-    func enableViewCode() {
-        translatesAutoresizingMaskIntoConstraints = false
-    }
-}
-
 final class PomodoroViewController: UIViewController {
 
-    private lazy var circularProgressContainerView: UIView = {
-        let view = UIView()
-        view.enableViewCode()
-        return view
-    }()
+    private lazy var pomodoroTimerCircularProgressIndicatorView =
+        CircularProgressIndicator()
+
+    private lazy var pomodoroCycleCircularProgressIndicatorView =
+        CircularProgressIndicator(lineWidth: 5)
 
     private lazy var timerLabel: UILabel = {
         let label = UILabel()
         label.textColor = .focus
-        label.text = "00:25:00"
         label.font = .preferredFont(forTextStyle: .title2)
         label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .center
-        label.enableViewCode()
+        return label
+    }()
+
+    private lazy var cycleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .focus
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
+        label.textAlignment = .center
         return label
     }()
 
@@ -48,10 +31,8 @@ final class PomodoroViewController: UIViewController {
         button.backgroundColor = .focus
         button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.setTitle("iniciar foco", for: .normal)
         button.setTitleColor(.background, for: .normal)
         button.layer.cornerRadius = 48 / 2
-        button.enableViewCode()
         return button
     }()
 
@@ -59,42 +40,86 @@ final class PomodoroViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 30
-        stack.enableViewCode()
         return stack
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewCode()
+    }
+
+    func setButtonTitle(_ title: String) {
+        primaryButton.setTitle(title, for: .normal)
+    }
+
+    func setCycle(_ cycle: String) {
+        cycleLabel.text = cycle
+    }
+
+    func setTime(_ time: String) {
+        timerLabel.text = time
+    }
+
+    func setTimeProgress(_ percetage: Double, duration: TimeInterval = 0.5) {
+        pomodoroTimerCircularProgressIndicatorView.setProgress(
+            percetage,
+            duration: duration
+        )
+    }
+
+    func setCycleProgress(_ percetage: Double, duration: TimeInterval = 0.5) {
+        pomodoroTimerCircularProgressIndicatorView.setProgress(
+            percetage,
+            duration: duration
+        )
+    }
+}
+
+extension PomodoroViewController: ViewCode {
+
+    func configureStyle() {
         view.backgroundColor = .background
+    }
 
-        mainVerticalStack.addArrangedSubview(circularProgressContainerView)
-        mainVerticalStack.addArrangedSubview(primaryButton)
-        circularProgressContainerView.addSubview(timerLabel)
-        view.addSubview(mainVerticalStack)
+    func configureHierarchy() {
+        mainVerticalStack.append(
+            pomodoroTimerCircularProgressIndicatorView,
+            primaryButton
+        )
+        pomodoroTimerCircularProgressIndicatorView.add(timerLabel)
+        pomodoroCycleCircularProgressIndicatorView.add(cycleLabel)
+        view.add(pomodoroCycleCircularProgressIndicatorView, mainVerticalStack)
+    }
 
-        NSLayoutConstraint.activate([
-            timerLabel.topAnchor.constraint(
-                equalTo: circularProgressContainerView.topAnchor,
-                constant: 12
-            ),
-            timerLabel.leadingAnchor.constraint(
-                equalTo: circularProgressContainerView.leadingAnchor,
-                constant: 12
-            ),
-            timerLabel.trailingAnchor.constraint(
-                equalTo: circularProgressContainerView.trailingAnchor,
-                constant: -12
-            ),
-            timerLabel.bottomAnchor.constraint(
-                equalTo: circularProgressContainerView.bottomAnchor,
-                constant: -12
-            ),
-
-            primaryButton.heightAnchor.constraint(equalToConstant: 48),
-            circularProgressContainerView.heightAnchor.constraint(equalToConstant: 230),
-            mainVerticalStack.widthAnchor.constraint(equalToConstant: 230),
-            mainVerticalStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mainVerticalStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
+    func configureConstraints() {
+        timerLabel.makeConstraint {
+            $0.top(reference: pomodoroTimerCircularProgressIndicatorView.top)
+            $0.leading(reference: pomodoroTimerCircularProgressIndicatorView.leading)
+            $0.trailing(reference: pomodoroTimerCircularProgressIndicatorView.trailing)
+            $0.bottom(reference: pomodoroTimerCircularProgressIndicatorView.bottom)
+        }
+        cycleLabel.makeConstraint {
+            $0.top(reference: pomodoroCycleCircularProgressIndicatorView.top)
+            $0.leading(reference: pomodoroCycleCircularProgressIndicatorView.leading)
+            $0.trailing(reference: pomodoroCycleCircularProgressIndicatorView.trailing)
+            $0.bottom(reference: pomodoroCycleCircularProgressIndicatorView.bottom)
+        }
+        primaryButton.makeConstraint {
+            $0.height(48)
+        }
+        pomodoroTimerCircularProgressIndicatorView.makeConstraint {
+            $0.height(230)
+        }
+        pomodoroCycleCircularProgressIndicatorView.makeConstraint {
+            $0.top(reference: view.safeTop, padding: 16)
+            $0.trailing(reference: view.trailing, padding: -16)
+            $0.height(46)
+            $0.width(46)
+        }
+        mainVerticalStack.makeConstraint {
+            $0.width(230)
+            $0.centerX(reference: view.centerX)
+            $0.centerY(reference: view.centerY)
+        }
     }
 }

@@ -6,37 +6,44 @@ import XCTest
 final class PomodoroViewControllerTests: XCTestCase {
     func test_onViewDidLoad_shouldConfigureAsFocusMode() {
         let isRecording = false
+        let name = "PomodoroViewController"
+        let test = "FocusInactive"
         let sut = PomodoroViewController()
-        _ = sut.view
+        sut.setTimeProgress(1.0, duration: 0.0)  //1.0 = 100%
+        sut.setCycleProgress(0.75, duration: 0.0)  //1.0 = 100%
+        sut.setButtonTitle("iniciar foco")
+        sut.setTime("00:00:00")
+        sut.setCycle("3")
+
+        sut.loadViewIfNeeded()
 
         sut.overrideUserInterfaceStyle = .dark
         assertSnapshot(
             of: sut,
             as: .image,
-            named: "PomodoroViewController",
+            named: name,
             record: isRecording,
-            testName: "FocusInactiveDarkMode"
+            testName: "\(test)DarkMode"
         )
 
         sut.overrideUserInterfaceStyle = .light
         assertSnapshot(
             of: sut,
             as: .image,
-            named: "PomodoroViewController",
+            named: name,
             record: isRecording,
-            testName: "FocusInactiveLightMode"
+            testName: "\(test)LightMode"
         )
 
+        let extraLargeTrait = UITraitCollection(
+            preferredContentSizeCategory: .extraExtraExtraLarge
+        )
         assertSnapshot(
             of: sut,
-            as: .image(
-                traits: UITraitCollection(
-                    preferredContentSizeCategory: .extraExtraExtraLarge
-                )
-            ),
-            named: "PomodoroViewController",
+            as: .image(traits: extraLargeTrait),
+            named: name,
             record: isRecording,
-            testName: "ExtraLargeFocusInactiveLightMode"
+            testName: "\(test)3xExtraLarge"
         )
     }
 }
