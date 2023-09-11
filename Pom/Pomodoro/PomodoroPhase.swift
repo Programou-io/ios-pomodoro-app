@@ -5,7 +5,7 @@ enum PomodoroPhase: Int {
     case shortBreak = 300
     case longBreak = 900
 
-    var duration: TimeInterval {
-        TimeInterval(rawValue)
+    var duration: Int {
+        rawValue
     }
 }

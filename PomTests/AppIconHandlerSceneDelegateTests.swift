@@ -130,21 +130,6 @@ final class AppIconHandlerSceneDelegateTests: XCTestCase {
 
     private func darkIcon() -> String { AppIcon.darkIcon.rawValue }
 
-    private func trackMemmoryLeak(
-        _ instance: AnyObject,
-        file: StaticString = #filePath,
-        line: UInt = #line
-    ) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(
-                instance,
-                "\(String(describing: instance)) must be nil, potential memmory leak was found",
-                file: file,
-                line: line
-            )
-        }
-    }
-
     private final class AppIconHandlerDelegateSpy: AppIconHandlerDelegate {
         private(set) var interfaceStyleCallCount = 0
         var interfaceStyleStub: UIUserInterfaceStyle = .light
