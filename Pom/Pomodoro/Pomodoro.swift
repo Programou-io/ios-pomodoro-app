@@ -1,12 +1,17 @@
+protocol Pomodorable {
+    var timeSpend: Int { get }
+    func setTimer()
+}
+
 protocol PomodoroDelegate {
     func changeTime(_ time: Int)
     func changePhase(_ phase: PhaseData)
 }
 
-final class Pomodoro {
-    
+final class Pomodoro: Pomodorable {
+
     var delegate: PomodoroDelegate?
-    
+
     private let timer: PomodoroTimer
     private let cycle: Cycle
     private(set) var timeSpend = 0 {
@@ -14,7 +19,7 @@ final class Pomodoro {
             delegate?.changeTime(timeSpend)
         }
     }
-    
+
     init(timer: PomodoroTimer, cycle: Cycle) {
         self.timer = timer
         self.cycle = cycle
