@@ -4,41 +4,56 @@ protocol PomodoroDelegate {
 }
 
 final class Pomodoro {
+    
+    var delegate: PomodoroDelegate?
+    
     private let timer: PomodoroTimer
     private let cycle: Cycle
-
-    private(set) var timeSpend = 0
-
-    var delegate: PomodoroDelegate?
-
+    private(set) var timeSpend = 0 {
+        didSet {
+            delegate?.changeTime(timeSpend)
+        }
+    }
+    
     init(timer: PomodoroTimer, cycle: Cycle) {
         self.timer = timer
         self.cycle = cycle
     }
 
     func setTimer() {
-        timeSpend = 0
-        timer.removeTimer()
-        delegate?.changeTime(timeSpend)
+        resetTimer()
         timer.setTimer { [weak self] in
             guard let self else { return }
-            timeSpend += 1
-            delegate?.changeTime(timeSpend)
-
-            guard let data = cycle.trigger(timeSpend: timeSpend) else {
-                return
-            }
-
-            timeSpend = 0
-            delegate?.changeTime(timeSpend)
-            timer.removeTimer()
-            delegate?.changePhase(
-                PhaseData(
-                    phase: data.phase,
-                    cycles: data.cycles,
-                    pomodoros: data.pomodoros
-                )
-            )
+            timerFire()
         }
+    }
+
+    private func timerFire() {
+        spendTime()
+
+        guard let data = cycle.trigger(timeSpend: timeSpend) else {
+            return
+        }
+
+        resetTimer()
+        changePhase(data: data)
+    }
+
+    private func resetTimer() {
+        timeSpend = 0
+        timer.removeTimer()
+    }
+
+    private func spendTime() {
+        timeSpend += 1
+    }
+
+    private func changePhase(data: PomodoroData) {
+        let phaseData = PhaseData(
+            phase: data.phase,
+            cycles: data.cycles,
+            pomodoros: data.pomodoros
+        )
+        delegate?.changePhase(phaseData)
     }
 }
