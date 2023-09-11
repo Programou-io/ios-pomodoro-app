@@ -33,6 +33,7 @@
 		B18D8CE92AAEB12F00317B5C /* PomodoroViewDatas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CE82AAEB12F00317B5C /* PomodoroViewDatas.swift */; };
 		B18D8CEB2AAEB14800317B5C /* PomodoroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CEA2AAEB14800317B5C /* PomodoroViewModel.swift */; };
 		B18D8CEE2AAF1A9100317B5C /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B18D8CED2AAF1A9100317B5C /* SnapshotTesting */; };
+		B18D8CF02AAF1EFB00317B5C /* PomodoroViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D8CEF2AAF1EFB00317B5C /* PomodoroViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		B18D8CE62AAEB11000317B5C /* WeakProxy+PomodoroDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeakProxy+PomodoroDelegate.swift"; sourceTree = "<group>"; };
 		B18D8CE82AAEB12F00317B5C /* PomodoroViewDatas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroViewDatas.swift; sourceTree = "<group>"; };
 		B18D8CEA2AAEB14800317B5C /* PomodoroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroViewModel.swift; sourceTree = "<group>"; };
+		B18D8CEF2AAF1EFB00317B5C /* PomodoroViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				B18D8CCD2AAE12D900317B5C /* PomorodoCycleTests.swift */,
 				B18D8CD32AAE84D700317B5C /* PomodoroTests.swift */,
 				B18D8CE02AAE9BF100317B5C /* PomodoroViewModelTests.swift */,
+				B18D8CEF2AAF1EFB00317B5C /* PomodoroViewControllerTests.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B18D8CD42AAE84D700317B5C /* PomodoroTests.swift in Sources */,
+				B18D8CF02AAF1EFB00317B5C /* PomodoroViewControllerTests.swift in Sources */,
 				B18D8CD72AAE895600317B5C /* XCTestCase+Extensions.swift in Sources */,
 				B10AF1172AA94AF4004FE42B /* SceneDelegateTests.swift in Sources */,
 				B18D8CCE2AAE12D900317B5C /* PomorodoCycleTests.swift in Sources */,
