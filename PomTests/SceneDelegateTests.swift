@@ -19,7 +19,7 @@ final class SceneDelegateTests: XCTestCase {
 
         sut.setupWindow(window: window)
 
-        XCTAssertTrue(window.rootViewController is ViewController)
+        XCTAssertTrue(window.rootViewController is PomodoroViewController)
     }
 
     func test_setupWindow_shouldReplaceInstanceWindowToTheProvided() {

@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func setupWindow(window: UIWindow) {
         self.window = window
-        window.rootViewController = ViewController()
+        window.rootViewController = PomodoroViewController()
         window.makeKeyAndVisible()
     }
 

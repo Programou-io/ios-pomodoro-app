@@ -1,10 +1,9 @@
 import UIKit
 
-class ViewController: UIViewController {
+class PomodoroViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "background")
     }
-
 }
