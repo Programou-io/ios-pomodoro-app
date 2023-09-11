@@ -205,15 +205,11 @@ final class PomodoroTests: XCTestCase {
         }
     }
 
-    private func makePomodoroData(phase: PomodoroPhase = .focus) -> PomodoroData {
-        PomodoroData(
-            phase: phase,
-            cycles: makeRandomInteger(),
-            pomodoros: makeRandomInteger()
-        )
-    }
-
-    private func makeRandomInteger() -> Int {
-        Int.random(in: (0..<100))
+    private func makePomodoroData(
+        phase: PomodoroPhase = .focus,
+        cycles: Int = makeRandomInteger(),
+        pomodoros: Int = makeRandomInteger()
+    ) -> PomodoroData {
+        PomodoroData(phase: phase, cycles: cycles, pomodoros: pomodoros)
     }
 }

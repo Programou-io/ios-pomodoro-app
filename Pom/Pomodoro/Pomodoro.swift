@@ -1,5 +1,5 @@
 protocol Pomodorable {
-    var timeSpend: Int { get }
+    var delegate: PomodoroDelegate? { get set }
     func setTimer()
 }
 
