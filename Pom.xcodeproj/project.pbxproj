@@ -311,7 +311,7 @@
 		B17ED98F2AA4E6CC002DAF71 /* Swift format */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
