@@ -75,26 +75,22 @@ final class PomodoroViewController: UIViewController {
     }
 
     func setPhase(_ phase: PomodoroPhase) {
+        let phaseColor: UIColor
+
         switch phase {
         case .focus:
-            pomodoroCycleCircularProgressIndicatorView.setColor(.focus)
-            pomodoroTimerCircularProgressIndicatorView.setColor(.focus)
-            timerLabel.textColor = .focus
-            cycleLabel.textColor = .focus
-            primaryButton.backgroundColor = .focus
+            phaseColor = .focus
         case .shortBreak:
-            pomodoroCycleCircularProgressIndicatorView.setColor(.shortBreak)
-            pomodoroTimerCircularProgressIndicatorView.setColor(.shortBreak)
-            timerLabel.textColor = .shortBreak
-            cycleLabel.textColor = .shortBreak
-            primaryButton.backgroundColor = .shortBreak
+            phaseColor = .shortBreak
         case .longBreak:
-            pomodoroCycleCircularProgressIndicatorView.setColor(.longBreak)
-            pomodoroTimerCircularProgressIndicatorView.setColor(.longBreak)
-            timerLabel.textColor = .longBreak
-            cycleLabel.textColor = .longBreak
-            primaryButton.backgroundColor = .longBreak
+            phaseColor = .longBreak
         }
+
+        pomodoroCycleCircularProgressIndicatorView.setColor(phaseColor)
+        pomodoroTimerCircularProgressIndicatorView.setColor(phaseColor)
+        timerLabel.textColor = phaseColor
+        cycleLabel.textColor = phaseColor
+        primaryButton.backgroundColor = phaseColor
     }
 }
 
