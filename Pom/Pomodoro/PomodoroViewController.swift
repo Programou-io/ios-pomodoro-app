@@ -68,7 +68,7 @@ final class PomodoroViewController: UIViewController {
     }
 
     func setCycleProgress(_ percetage: Double, duration: TimeInterval = 0.5) {
-        pomodoroTimerCircularProgressIndicatorView.setProgress(
+        pomodoroCycleCircularProgressIndicatorView.setProgress(
             percetage,
             duration: duration
         )

@@ -9,7 +9,7 @@ final class PomodoroViewControllerTests: XCTestCase {
         let name = "PomodoroViewController"
         let test = "FocusInactive"
         let sut = PomodoroViewController()
-        sut.setTimeProgress(1.0, duration: 0.0)  //1.0 = 100%
+        sut.setTimeProgress(0.95, duration: 0.0)  //1.0 = 100%
         sut.setCycleProgress(0.75, duration: 0.0)  //1.0 = 100%
         sut.setButtonTitle("iniciar foco")
         sut.setTime("00:00:00")

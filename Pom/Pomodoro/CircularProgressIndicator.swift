@@ -70,7 +70,7 @@ final class CircularProgressIndicator: UIView {
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineCap = .round
         progressLayer.lineWidth = lineWidth
-        progressLayer.strokeEnd = 0
+        progressLayer.strokeEnd = progress
         progressLayer.strokeColor = color.cgColor
         containerView.layer.addSublayer(progressLayer)
     }
