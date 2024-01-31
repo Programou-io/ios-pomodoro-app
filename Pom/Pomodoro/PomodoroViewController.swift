@@ -89,7 +89,11 @@ final class PomodoroViewController: UIViewController {
             cycleLabel.textColor = .shortBreak
             primaryButton.backgroundColor = .shortBreak
         case .longBreak:
-            break
+            pomodoroCycleCircularProgressIndicatorView.setColor(.longBreak)
+            pomodoroTimerCircularProgressIndicatorView.setColor(.longBreak)
+            timerLabel.textColor = .longBreak
+            cycleLabel.textColor = .longBreak
+            primaryButton.backgroundColor = .longBreak
         }
     }
 }
