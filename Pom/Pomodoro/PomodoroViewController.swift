@@ -73,6 +73,25 @@ final class PomodoroViewController: UIViewController {
             duration: duration
         )
     }
+
+    func setPhase(_ phase: PomodoroPhase) {
+        switch phase {
+        case .focus:
+            pomodoroCycleCircularProgressIndicatorView.setColor(.focus)
+            pomodoroTimerCircularProgressIndicatorView.setColor(.focus)
+            timerLabel.textColor = .focus
+            cycleLabel.textColor = .focus
+            primaryButton.backgroundColor = .focus
+        case .shortBreak:
+            pomodoroCycleCircularProgressIndicatorView.setColor(.shortBreak)
+            pomodoroTimerCircularProgressIndicatorView.setColor(.shortBreak)
+            timerLabel.textColor = .shortBreak
+            cycleLabel.textColor = .shortBreak
+            primaryButton.backgroundColor = .shortBreak
+        case .longBreak:
+            break
+        }
+    }
 }
 
 extension PomodoroViewController: ViewCode {

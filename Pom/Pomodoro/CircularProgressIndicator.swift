@@ -3,11 +3,11 @@ import UIKit
 final class CircularProgressIndicator: UIView {
     private var circleLayer = CAShapeLayer()
     private var progressLayer = CAShapeLayer()
+
     private var startPoint = CGFloat(-Double.pi / 2)
     private var endPoint = CGFloat(3 * Double.pi / 2)
     private var progress = 0.0
-
-    private let color: UIColor
+    private var color: UIColor
     private let lineWidth: CGFloat
 
     private lazy var containerView = UIView()
@@ -34,6 +34,10 @@ final class CircularProgressIndicator: UIView {
 
     func setProgress(_ value: Double, duration: TimeInterval = 0.5) {
         animateProgress(value: value, duration: duration)
+    }
+
+    func setColor(_ color: UIColor) {
+        self.color = color
     }
 
     private func animateProgress(value: Double, duration: TimeInterval) {
