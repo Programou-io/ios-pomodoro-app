@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		523950352B8145400079AC8C /* DefaultPomodoroTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523950342B8145400079AC8C /* DefaultPomodoroTimerTests.swift */; };
+		523950372B814C9C0079AC8C /* DefaultPomodoroTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523950362B814C9C0079AC8C /* DefaultPomodoroTimer.swift */; };
 		B10AF1172AA94AF4004FE42B /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AF1162AA94AF4004FE42B /* SceneDelegateTests.swift */; };
 		B10AF1192AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AF1182AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift */; };
 		B10AF11B2AA96721004FE42B /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AF11A2AA96721004FE42B /* AppIcon.swift */; };
@@ -52,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		523950342B8145400079AC8C /* DefaultPomodoroTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPomodoroTimerTests.swift; sourceTree = "<group>"; };
+		523950362B814C9C0079AC8C /* DefaultPomodoroTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPomodoroTimer.swift; sourceTree = "<group>"; };
 		B10AF1162AA94AF4004FE42B /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		B10AF1182AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHandlerSceneDelegateTests.swift; sourceTree = "<group>"; };
 		B10AF11A2AA96721004FE42B /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 				B18D8CE82AAEB12F00317B5C /* PomodoroViewDatas.swift */,
 				B18D8CEA2AAEB14800317B5C /* PomodoroViewModel.swift */,
 				B18D8CFB2AAF5A1100317B5C /* CircularProgressIndicator.swift */,
+				523950362B814C9C0079AC8C /* DefaultPomodoroTimer.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				B18D8CD32AAE84D700317B5C /* PomodoroTests.swift */,
 				B18D8CE02AAE9BF100317B5C /* PomodoroViewModelTests.swift */,
 				B18D8CEF2AAF1EFB00317B5C /* PomodoroViewControllerTests.swift */,
+				523950342B8145400079AC8C /* DefaultPomodoroTimerTests.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -335,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B18D8CE52AAEB0D700317B5C /* WeakProxy.swift in Sources */,
+				523950372B814C9C0079AC8C /* DefaultPomodoroTimer.swift in Sources */,
 				B18D8CE92AAEB12F00317B5C /* PomodoroViewDatas.swift in Sources */,
 				B18D8CE72AAEB11000317B5C /* WeakProxy+PomodoroDelegate.swift in Sources */,
 				B18D8CDF2AAE959400317B5C /* PomodoroTimer.swift in Sources */,
@@ -365,6 +372,7 @@
 				B18D8CF02AAF1EFB00317B5C /* PomodoroViewControllerTests.swift in Sources */,
 				B18D8CD72AAE895600317B5C /* XCTestCase+Extensions.swift in Sources */,
 				B10AF1172AA94AF4004FE42B /* SceneDelegateTests.swift in Sources */,
+				523950352B8145400079AC8C /* DefaultPomodoroTimerTests.swift in Sources */,
 				B18D8CCE2AAE12D900317B5C /* PomorodoCycleTests.swift in Sources */,
 				B18D8CE32AAEA91000317B5C /* Fixtures.swift in Sources */,
 				B18D8CE12AAE9BF100317B5C /* PomodoroViewModelTests.swift in Sources */,
