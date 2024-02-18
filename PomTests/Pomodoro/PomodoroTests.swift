@@ -36,6 +36,50 @@ final class PomodoroTests: XCTestCase {
         XCTAssertEqual(env.sut.timeSpend, 0)
     }
 
+    func test_shouldChanteTimwWithFocusPhase_whenCycleIsFocus() {
+        let env = makeEnviroment()
+        env.sut.setTimer()
+        env.cycle.phase = .focus
+
+        env.timer.trigger()
+
+        XCTAssertEqual(env.delegate.changeTimeWithPahseReceived, [.focus, .focus])
+    }
+
+    func test_shouldChanteTimwWithShortBreakPhase_whenCycleIsShortBreak() {
+        let env = makeEnviroment()
+        env.sut.setTimer()
+        env.cycle.phase = .shortBreak
+
+        env.timer.trigger()
+
+        XCTAssertEqual(env.delegate.changeTimeWithPahseReceived, [.focus, .shortBreak])
+    }
+
+    func test_shouldChanteTimwWithLongBreakPhase_whenCycleIsLongBreak() {
+        let env = makeEnviroment()
+        env.sut.setTimer()
+        env.cycle.phase = .longBreak
+
+        env.timer.trigger()
+
+        XCTAssertEqual(env.delegate.changeTimeWithPahseReceived, [.focus, .longBreak])
+    }
+
+    func test_shouldChangeTimeWithLongBreak_whenCylesTriggerAfterChange() {
+        let env = makeEnviroment()
+        env.cycle.phase = .shortBreak
+        env.sut.setTimer()
+        env.cycle.phase = .longBreak
+
+        env.timer.trigger()
+
+        XCTAssertEqual(
+            env.delegate.changeTimeWithPahseReceived,
+            [.shortBreak, .longBreak]
+        )
+    }
+
     func test_setTimer_shouldNotifyTheTimeChangesWithZero() {
         let env = makeEnviroment()
 
@@ -106,6 +150,12 @@ final class PomodoroTests: XCTestCase {
         env.timer.trigger()
 
         XCTAssertEqual(env.delegate.changeTimeReceived, [0, 1, 2, 3])
+        XCTAssertEqual(
+            env.delegate.changeTimeWithPahseReceived,
+            [
+                .focus, .focus, .focus, .focus,
+            ]
+        )
     }
 
     func test_setTimer_shouldChangeTimeInTheEndWithZero_whenCycleReturnsData() {
@@ -116,6 +166,7 @@ final class PomodoroTests: XCTestCase {
         env.timer.trigger()
 
         XCTAssertEqual(env.delegate.changeTimeReceived.last, 0)
+        XCTAssertEqual(env.sut.timeSpend, 0)
         XCTAssertEqual(env.sut.timeSpend, 0)
     }
 
@@ -166,6 +217,9 @@ final class PomodoroTests: XCTestCase {
 
     private class CycleStub: Cycle {
         private(set) var timeSpendReceived = [Int]()
+
+        var phase: PomodoroPhase = .focus
+
         var triggerStub: PomodoroData?
         func trigger(timeSpend: Int) -> PomodoroData? {
             timeSpendReceived.append(timeSpend)
@@ -177,9 +231,11 @@ final class PomodoroTests: XCTestCase {
 
         private(set) var changeTimeReceived = [Int]()
         private(set) var changePhaseRecieved = [PhaseData]()
+        private(set) var changeTimeWithPahseReceived = [PomodoroPhase]()
 
-        func changeTime(_ time: Int) {
+        func changeTime(_ time: Int, phase: PomodoroPhase) {
             changeTimeReceived.append(time)
+            changeTimeWithPahseReceived.append(phase)
         }
 
         func changePhase(_ phase: PhaseData) {

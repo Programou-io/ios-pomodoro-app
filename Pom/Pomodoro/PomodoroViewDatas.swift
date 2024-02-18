@@ -16,4 +16,5 @@ struct PomodoroButtonViewData {
 
 struct PomodoroTimeViewData {
     let time: String
+    let progress: Double
 }

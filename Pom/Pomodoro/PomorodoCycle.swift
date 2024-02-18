@@ -1,11 +1,14 @@
 protocol Cycle {
+    var phase: PomodoroPhase { get }
     func trigger(timeSpend: Int) -> PomodoroData?
 }
 
 final class PomorodoCycle: Cycle {
-    private var phase: PomodoroPhase = .focus
+
     private var cycles = 0
     private var pomodoros = 0
+
+    private(set) var phase: PomodoroPhase = .focus
 
     func trigger(timeSpend: Int) -> PomodoroData? {
         let isFinished = timeSpend >= phase.duration

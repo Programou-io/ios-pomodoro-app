@@ -8,7 +8,7 @@ final class PomodoroViewModelTests: XCTestCase {
         env.sut.startCycle()
         XCTAssertEqual(
             env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "00:00:00")]
+            [PomodoroTimeViewData(time: "00:00:00", progress: 0.0)]
         )
     }
 
@@ -30,11 +30,11 @@ final class PomodoroViewModelTests: XCTestCase {
     func test_implementedChangeTime_shouldUpdateTimeWithZero_whenPomodoroDeleiversZero() {
         let env = makeEnviroment()
 
-        env.pomodoro.delegate?.changeTime(0)
+        env.pomodoro.delegate?.changeTime(0, phase: .focus)
 
         XCTAssertEqual(
             env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "00:00:00")]
+            [PomodoroTimeViewData(time: "00:00:00", progress: 0)]
         )
     }
 
@@ -43,11 +43,11 @@ final class PomodoroViewModelTests: XCTestCase {
     {
         let env = makeEnviroment()
 
-        env.pomodoro.delegate?.changeTime(60)
+        env.pomodoro.delegate?.changeTime(60, phase: .focus)
 
         XCTAssertEqual(
             env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "00:01:00")]
+            [PomodoroTimeViewData(time: "00:01:00", progress: 0.04)]
         )
     }
 
@@ -56,11 +56,11 @@ final class PomodoroViewModelTests: XCTestCase {
     {
         let env = makeEnviroment()
 
-        env.pomodoro.delegate?.changeTime(3600)
+        env.pomodoro.delegate?.changeTime(3600, phase: .shortBreak)
 
         XCTAssertEqual(
             env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "01:00:00")]
+            [PomodoroTimeViewData(time: "01:00:00", progress: 12.0)]
         )
     }
 
@@ -69,12 +69,10 @@ final class PomodoroViewModelTests: XCTestCase {
     {
         let env = makeEnviroment()
 
-        env.pomodoro.delegate?.changeTime(3601)
+        env.pomodoro.delegate?.changeTime(3601, phase: .longBreak)
 
-        XCTAssertEqual(
-            env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "01:00:01")]
-        )
+        XCTAssertEqual(env.delegate.changeTimeRecieved[0].time, "01:00:01")
+        XCTAssertEqual(env.delegate.changeTimeRecieved[0].progress, 4.00, accuracy: 0.1)
     }
 
     func
@@ -82,11 +80,11 @@ final class PomodoroViewModelTests: XCTestCase {
     {
         let env = makeEnviroment()
 
-        env.pomodoro.delegate?.changeTime(1500)
+        env.pomodoro.delegate?.changeTime(1500, phase: .focus)
 
         XCTAssertEqual(
             env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "00:25:00")]
+            [PomodoroTimeViewData(time: "00:25:00", progress: 1.0)]
         )
     }
 
@@ -95,11 +93,11 @@ final class PomodoroViewModelTests: XCTestCase {
     {
         let env = makeEnviroment()
 
-        env.pomodoro.delegate?.changeTime(900)
+        env.pomodoro.delegate?.changeTime(900, phase: .focus)
 
         XCTAssertEqual(
             env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "00:15:00")]
+            [PomodoroTimeViewData(time: "00:15:00", progress: 0.6)]
         )
     }
 
@@ -108,12 +106,10 @@ final class PomodoroViewModelTests: XCTestCase {
     {
         let env = makeEnviroment()
 
-        env.pomodoro.delegate?.changeTime(300)
+        env.pomodoro.delegate?.changeTime(300, phase: .longBreak)
 
-        XCTAssertEqual(
-            env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "00:05:00")]
-        )
+        XCTAssertEqual(env.delegate.changeTimeRecieved[0].time, "00:05:00")
+        XCTAssertEqual(env.delegate.changeTimeRecieved[0].progress, 0.333, accuracy: 0.1)
     }
 
     func test_implementedChangePhase_shouldDelegatesChangePhaseWithCorrectPhase() {
@@ -213,7 +209,7 @@ final class PomodoroViewModelTests: XCTestCase {
 
         XCTAssertEqual(
             env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "00:25:00")]
+            [PomodoroTimeViewData(time: "00:25:00", progress: 0.0)]
         )
     }
 
@@ -239,7 +235,7 @@ final class PomodoroViewModelTests: XCTestCase {
 
         XCTAssertEqual(
             env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "00:05:00")]
+            [PomodoroTimeViewData(time: "00:05:00", progress: 0.0)]
         )
     }
 
@@ -265,7 +261,7 @@ final class PomodoroViewModelTests: XCTestCase {
 
         XCTAssertEqual(
             env.delegate.changeTimeRecieved,
-            [PomodoroTimeViewData(time: "00:15:00")]
+            [PomodoroTimeViewData(time: "00:15:00", progress: 0.0)]
         )
     }
 
@@ -338,7 +334,7 @@ final class PomodoroViewModelTests: XCTestCase {
 
 extension PomodoroTimeViewData: Equatable {
     public static func == (lhs: PomodoroTimeViewData, rhs: PomodoroTimeViewData) -> Bool {
-        lhs.time == rhs.time
+        lhs.time == rhs.time && lhs.progress == rhs.progress
     }
 }
 extension PomodoroButtonViewData: Equatable {

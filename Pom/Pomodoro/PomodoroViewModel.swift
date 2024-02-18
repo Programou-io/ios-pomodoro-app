@@ -16,20 +16,28 @@ final class PomodoroViewModel {
     }
 
     func startCycle() {
-        delegate?.changeTime(viewData: PomodoroTimeViewData(time: "00:00:00"))
+        delegate?.changeTime(
+            viewData: PomodoroTimeViewData(time: "00:00:00", progress: 0.0)
+        )
         delegate?.changeButton(viewData: PomodoroButtonViewData(title: "pausar"))
         pomodoro.setTimer()
     }
 }
 
 extension PomodoroViewModel: PomodoroDelegate {
-    func changeTime(_ time: Int) {
+    func changeTime(_ time: Int, phase: PomodoroPhase) {
         let hours = time / 3600
         let minutes = time / 60 % 60
         let seconds = time % 60
         let timeFormat = "%02d:%02d:%02d"
         let timeFormatted = String(format: timeFormat, hours, minutes, seconds)
-        delegate?.changeTime(viewData: PomodoroTimeViewData(time: timeFormatted))
+
+        delegate?.changeTime(
+            viewData: PomodoroTimeViewData(
+                time: timeFormatted,
+                progress: Double(time) / Double(phase.duration)
+            )
+        )
     }
 
     func changePhase(_ data: PhaseData) {
@@ -54,6 +62,6 @@ extension PomodoroViewModel: PomodoroDelegate {
         delegate?.changeButton(
             viewData: PomodoroButtonViewData(title: buttonTitle)
         )
-        delegate?.changeTime(viewData: PomodoroTimeViewData(time: time))
+        delegate?.changeTime(viewData: PomodoroTimeViewData(time: time, progress: 0.0))
     }
 }

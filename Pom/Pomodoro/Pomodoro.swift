@@ -4,7 +4,7 @@ protocol Pomodorable {
 }
 
 protocol PomodoroDelegate {
-    func changeTime(_ time: Int)
+    func changeTime(_ time: Int, phase: PomodoroPhase)
     func changePhase(_ phase: PhaseData)
 }
 
@@ -16,7 +16,7 @@ final class Pomodoro: Pomodorable {
     private let cycle: Cycle
     private(set) var timeSpend = 0 {
         didSet {
-            delegate?.changeTime(timeSpend)
+            delegate?.changeTime(timeSpend, phase: cycle.phase)
         }
     }
 
