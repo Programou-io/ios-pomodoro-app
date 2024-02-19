@@ -4,24 +4,22 @@ final class PomodoroViewController: UIViewController {
 
     private var viewModel: PomodoroViewModeling
 
-    private lazy var pomodoroTimerCircularProgressIndicatorView =
+    private(set) lazy var pomodoroTimerCircularProgressIndicatorView =
         CircularProgressIndicator()
 
-    private lazy var pomodoroCycleCircularProgressIndicatorView =
+    private(set) lazy var pomodoroCycleCircularProgressIndicatorView =
         CircularProgressIndicator(lineWidth: 5)
 
-    private lazy var timerLabel: UILabel = {
+    private(set) lazy var timerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .focus
         label.font = .preferredFont(forTextStyle: .title2)
         label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .center
         return label
     }()
 
-    private lazy var cycleLabel: UILabel = {
+    private(set) lazy var cycleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .focus
         label.font = .preferredFont(forTextStyle: .headline)
         label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .center
@@ -30,7 +28,6 @@ final class PomodoroViewController: UIViewController {
 
     private(set) lazy var primaryButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .focus
         button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.setTitleColor(.background, for: .normal)
@@ -61,6 +58,9 @@ final class PomodoroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewCode()
+
+        viewModel.delegate = self
+        viewModel.setupInitialState()
     }
 
     func setButtonTitle(_ title: String) {
@@ -117,7 +117,6 @@ extension PomodoroViewController: ViewCode {
 
     func configureStyle() {
         view.backgroundColor = .background
-        viewModel.delegate = self
     }
 
     func configureHierarchy() {
@@ -165,22 +164,23 @@ extension PomodoroViewController: ViewCode {
 
 extension PomodoroViewController: PomodoroViewModelDelegate {
     func changeTime(viewData: PomodoroTimeViewData) {
-
+        setTime(viewData.time)
+        setTimeProgress(viewData.progress)
     }
 
     func changeButton(viewData: PomodoroButtonViewData) {
-
+        setButtonTitle(viewData.title)
     }
 
     func changePhase(viewData: PomodoroPhaseViewData) {
-
+        setPhase(viewData.phase)
     }
 
     func changeCycles(viewData: PomodoroCyclesViewData) {
-
+        setCycleProgress(viewData.period)
     }
 
     func changePomodoros(viewData: PomodoroDoneViewData) {
-
+        setCycle(viewData.pomodoros)
     }
 }

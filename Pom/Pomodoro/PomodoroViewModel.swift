@@ -19,6 +19,7 @@ final class PomodoroViewModel: PomodoroViewModeling {
 
     init(pomodoro: Pomodorable) {
         self.pomodoro = pomodoro
+        self.pomodoro.delegate = WeakProxy(self)
     }
 
     func setupInitialState() {

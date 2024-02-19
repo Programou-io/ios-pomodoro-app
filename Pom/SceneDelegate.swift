@@ -21,28 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func setupWindow(window: UIWindow) {
         self.window = window
-        window.rootViewController = PomodoroViewController(
-            viewModel: PomodoroViewModelDummy()
-        )
+        window.rootViewController = PomodoroComposer.compose()
         window.makeKeyAndVisible()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         appIconDelegate.sceneDidBecomeActive(scene)
     }
-}
-
-private class PomodoroViewModelDummy: PomodoroViewModeling {
-    var delegate: PomodoroViewModelDelegate?
-
-    func setupInitialState() {
-
-    }
-
-    func startCycle() {
-
-    }
-
 }
 
 extension SceneDelegate: AppIconHandlerDelegate {

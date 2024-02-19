@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		523950352B8145400079AC8C /* DefaultPomodoroTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523950342B8145400079AC8C /* DefaultPomodoroTimerTests.swift */; };
 		523950372B814C9C0079AC8C /* DefaultPomodoroTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523950362B814C9C0079AC8C /* DefaultPomodoroTimer.swift */; };
+		523950392B82D9200079AC8C /* PomodoroComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523950382B82D9200079AC8C /* PomodoroComposerTests.swift */; };
+		5239503B2B82DDA60079AC8C /* PomodoroComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239503A2B82DDA60079AC8C /* PomodoroComposer.swift */; };
 		B10AF1172AA94AF4004FE42B /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AF1162AA94AF4004FE42B /* SceneDelegateTests.swift */; };
 		B10AF1192AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AF1182AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift */; };
 		B10AF11B2AA96721004FE42B /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10AF11A2AA96721004FE42B /* AppIcon.swift */; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		523950342B8145400079AC8C /* DefaultPomodoroTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPomodoroTimerTests.swift; sourceTree = "<group>"; };
 		523950362B814C9C0079AC8C /* DefaultPomodoroTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPomodoroTimer.swift; sourceTree = "<group>"; };
+		523950382B82D9200079AC8C /* PomodoroComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroComposerTests.swift; sourceTree = "<group>"; };
+		5239503A2B82DDA60079AC8C /* PomodoroComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroComposer.swift; sourceTree = "<group>"; };
 		B10AF1162AA94AF4004FE42B /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		B10AF1182AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHandlerSceneDelegateTests.swift; sourceTree = "<group>"; };
 		B10AF11A2AA96721004FE42B /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				B18D8CEA2AAEB14800317B5C /* PomodoroViewModel.swift */,
 				B18D8CFB2AAF5A1100317B5C /* CircularProgressIndicator.swift */,
 				523950362B814C9C0079AC8C /* DefaultPomodoroTimer.swift */,
+				5239503A2B82DDA60079AC8C /* PomodoroComposer.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				B18D8CE02AAE9BF100317B5C /* PomodoroViewModelTests.swift */,
 				B18D8CEF2AAF1EFB00317B5C /* PomodoroViewControllerTests.swift */,
 				523950342B8145400079AC8C /* DefaultPomodoroTimerTests.swift */,
+				523950382B82D9200079AC8C /* PomodoroComposerTests.swift */,
 			);
 			path = Pomodoro;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				B18D8CDB2AAE957000317B5C /* PhaseData.swift in Sources */,
 				B10AF11B2AA96721004FE42B /* AppIcon.swift in Sources */,
 				B18D8CD02AAE26D800317B5C /* PomodoroData.swift in Sources */,
+				5239503B2B82DDA60079AC8C /* PomodoroComposer.swift in Sources */,
 				B18D8CF82AAF591600317B5C /* UIView+Extensions.swift in Sources */,
 				B18D8CFA2AAF593A00317B5C /* ViewCode.swift in Sources */,
 				B18D8CF42AAF58E000317B5C /* UIColor+Extensions.swift in Sources */,
@@ -377,6 +384,7 @@
 				B18D8CE32AAEA91000317B5C /* Fixtures.swift in Sources */,
 				B18D8CE12AAE9BF100317B5C /* PomodoroViewModelTests.swift in Sources */,
 				B18D8CCC2AAE103800317B5C /* PomodoroPhaseTests.swift in Sources */,
+				523950392B82D9200079AC8C /* PomodoroComposerTests.swift in Sources */,
 				B10AF1192AA95359004FE42B /* AppIconHandlerSceneDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

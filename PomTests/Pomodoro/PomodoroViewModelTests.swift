@@ -4,7 +4,13 @@ import XCTest
 
 final class PomodoroViewModelTests: XCTestCase {
 
-    func test() {
+    func test_shouldSetPomodoroDelegate() {
+        let env = makeEnviroment()
+
+        XCTAssertNotNil(env.pomodoro.delegate)
+    }
+
+    func test_shouldCallDelegateMethods_whenSetupInitialStateWasCalled() {
         let env = makeEnviroment()
 
         env.sut.setupInitialState()
@@ -314,7 +320,6 @@ final class PomodoroViewModelTests: XCTestCase {
         let pomodoroUseCase = PomodoroSpy()
         let sut = PomodoroViewModel(pomodoro: pomodoroUseCase)
         sut.delegate = delegate
-        pomodoroUseCase.delegate = WeakProxy(sut)
 
         trackMemmoryLeak(delegate)
         trackMemmoryLeak(pomodoroUseCase)

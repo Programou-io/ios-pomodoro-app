@@ -6,8 +6,13 @@ final class CircularProgressIndicator: UIView {
 
     private var startPoint = CGFloat(-Double.pi / 2)
     private var endPoint = CGFloat(3 * Double.pi / 2)
-    private var progress = 0.0
-    private var color: UIColor
+    private(set) var progress = 0.0
+    private(set) var color: UIColor {
+        didSet {
+            progressLayer.strokeColor = color.cgColor
+            circleLayer.strokeColor = color.withAlphaComponent(0.4).cgColor
+        }
+    }
     private let lineWidth: CGFloat
 
     private lazy var containerView = UIView()
@@ -43,6 +48,7 @@ final class CircularProgressIndicator: UIView {
     private func animateProgress(value: Double, duration: TimeInterval) {
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         circularProgressAnimation.duration = duration
+        circularProgressAnimation.fromValue = progress
         circularProgressAnimation.toValue = value
         circularProgressAnimation.fillMode = .forwards
         circularProgressAnimation.isRemovedOnCompletion = false
