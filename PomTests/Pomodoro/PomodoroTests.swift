@@ -193,6 +193,23 @@ final class PomodoroTests: XCTestCase {
         XCTAssertEqual(env.delegate.changePhaseRecieved.first?.pomodoros, data.pomodoros)
     }
 
+    func test_shouldMoveToNextPhase_whenTimerIsSettedAgain() {
+        let data = PomodoroData(phase: .longBreak, cycles: 32, pomodoros: 1)
+        let env = makeEnviroment()
+        env.sut.setTimer()
+        env.cycle.triggerStub = data
+        env.cycle.phase = .focus
+        env.timer.trigger()
+
+        env.sut.setTimer()
+
+        XCTAssertEqual(env.timer.removeTimerCallCount, 3)
+        XCTAssertEqual(env.sut.timeSpend, 0)
+        XCTAssertEqual(env.delegate.changePhaseRecieved.first?.phase, data.phase)
+        XCTAssertEqual(env.delegate.changePhaseRecieved.first?.cycles, data.cycles)
+        XCTAssertEqual(env.delegate.changePhaseRecieved.first?.pomodoros, data.pomodoros)
+    }
+
     private struct Enviroment {
         let sut: Pomodoro
         let cycle: CycleStub

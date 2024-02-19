@@ -26,6 +26,14 @@ final class Pomodoro: Pomodorable {
     }
 
     func setTimer() {
+        if timeSpend != 0, let phaseData = cycle.trigger(timeSpend: cycle.phase.duration)
+        {
+            changePhase(data: phaseData)
+            timer.removeTimer()
+            resetTimer()
+            return
+        }
+
         resetTimer()
         timer.setTimer { [weak self] in
             guard let self else { return }

@@ -61,7 +61,7 @@ final class PomodoroViewModelTests: XCTestCase {
         env.sut.startCycle()
         XCTAssertEqual(
             env.delegate.changeButtonRecieved,
-            [PomodoroButtonViewData(title: "pausar")]
+            [PomodoroButtonViewData(title: "pular")]
         )
     }
 

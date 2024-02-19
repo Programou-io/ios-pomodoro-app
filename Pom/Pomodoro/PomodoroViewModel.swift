@@ -36,7 +36,7 @@ final class PomodoroViewModel: PomodoroViewModeling {
         delegate?.changeTime(
             viewData: PomodoroTimeViewData(time: "00:00:00", progress: 0.0)
         )
-        delegate?.changeButton(viewData: PomodoroButtonViewData(title: "pausar"))
+        delegate?.changeButton(viewData: PomodoroButtonViewData(title: "pular"))
         pomodoro.setTimer()
     }
 }
