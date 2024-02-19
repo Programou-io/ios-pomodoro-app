@@ -9,7 +9,15 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Pom.xcodeproj",
+          "identifier" : "B14A1EAC2AA4C234004EC140",
+          "name" : "Pom"
+        }
+      ]
+    },
     "targetForVariableExpansion" : {
       "containerPath" : "container:Pom.xcodeproj",
       "identifier" : "B14A1EAC2AA4C234004EC140",

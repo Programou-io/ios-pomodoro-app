@@ -11,7 +11,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
 
     func scene(
-        _ scene: UIScene, willConnectTo session: UISceneSession,
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let windowScene = scene as? UIWindowScene else { return }
@@ -20,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func setupWindow(window: UIWindow) {
         self.window = window
-        window.rootViewController = ViewController()
+        window.rootViewController = PomodoroComposer.compose()
         window.makeKeyAndVisible()
     }
 

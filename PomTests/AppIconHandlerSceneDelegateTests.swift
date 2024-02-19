@@ -30,14 +30,18 @@ final class AppIconHandlerSceneDelegateTests: XCTestCase {
     func test_chooseIcon_shouldReturnDark_whenDeviceIsDarkAndIconIsUnknowned() {
         let env = makeEnviroment()
         let iconName = env.sut.chooseIcon(
-            deviceMode: .dark, currentIcon: "any invalid icon name")
+            deviceMode: .dark,
+            currentIcon: "any invalid icon name"
+        )
         XCTAssertEqual(iconName, .darkIcon)
     }
 
     func test_chooseIcon_shouldReturnLight_whenDeviceIsLightAndIconIsUnknowned() {
         let env = makeEnviroment()
         let iconName = env.sut.chooseIcon(
-            deviceMode: .light, currentIcon: "any invalid icon name")
+            deviceMode: .light,
+            currentIcon: "any invalid icon name"
+        )
         XCTAssertEqual(iconName, .lightIcon)
     }
 
@@ -126,17 +130,6 @@ final class AppIconHandlerSceneDelegateTests: XCTestCase {
 
     private func darkIcon() -> String { AppIcon.darkIcon.rawValue }
 
-    private func trackMemmoryLeak(
-        _ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line
-    ) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(
-                instance,
-                "\(String(describing: instance)) must be nil, potential memmory leak was found",
-                file: file, line: line)
-        }
-    }
-    
     private final class AppIconHandlerDelegateSpy: AppIconHandlerDelegate {
         private(set) var interfaceStyleCallCount = 0
         var interfaceStyleStub: UIUserInterfaceStyle = .light
