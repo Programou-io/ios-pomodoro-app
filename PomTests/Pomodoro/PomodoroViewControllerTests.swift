@@ -8,7 +8,7 @@ final class PomodoroViewControllerTests: XCTestCase {
         let isRecording = false
         let name = "PomodoroViewController"
         let test = "FocusInactive"
-        let sut = PomodoroViewController()
+        let sut = PomodoroViewController(viewModel: PomodoroViewModelSpy())
         sut.setTimeProgress(0.95, duration: 0.0)  //1.0 = 100%
         sut.setCycleProgress(0.75, duration: 0.0)  //1.0 = 100%
         sut.setPhase(.focus)
@@ -52,7 +52,7 @@ final class PomodoroViewControllerTests: XCTestCase {
         let isRecording = false
         let name = "PomodoroViewControllerShortBreak"
         let test = "FocusInactive"
-        let sut = PomodoroViewController()
+        let sut = PomodoroViewController(viewModel: PomodoroViewModelSpy())
         sut.setTimeProgress(0.95, duration: 0.0)  //1.0 = 100%
         sut.setCycleProgress(0.75, duration: 0.0)  //1.0 = 100%
         sut.setPhase(.shortBreak)
@@ -96,7 +96,7 @@ final class PomodoroViewControllerTests: XCTestCase {
         let isRecording = false
         let name = "PomodoroViewControllerLongBreak"
         let test = "FocusInactive"
-        let sut = PomodoroViewController()
+        let sut = PomodoroViewController(viewModel: PomodoroViewModelSpy())
         sut.setTimeProgress(0.95, duration: 0.0)  //1.0 = 100%
         sut.setCycleProgress(0.75, duration: 0.0)  //1.0 = 100%
         sut.setPhase(.longBreak)
@@ -134,5 +134,44 @@ final class PomodoroViewControllerTests: XCTestCase {
             record: isRecording,
             testName: "\(test)3xExtraLarge"
         )
+    }
+
+    func test_primaryButtonDidTapped_shouldCallViewModelToStartCycle() {
+        let viewModel = PomodoroViewModelSpy()
+        let sut = PomodoroViewController(viewModel: viewModel)
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(viewModel.startCycleCallCount, 0)
+
+        sut.primaryButton.sendActions(for: .touchUpInside)
+
+        XCTAssertEqual(viewModel.startCycleCallCount, 1)
+    }
+
+    func test_viewDidLoad_shouldSetViewModelDelegate() {
+        let viewModel = PomodoroViewModelSpy()
+        let sut = PomodoroViewController(viewModel: viewModel)
+
+        XCTAssertNil(viewModel.delegate)
+
+        sut.loadViewIfNeeded()
+
+        XCTAssertNotNil(viewModel.delegate)
+    }
+
+    private final class PomodoroViewModelSpy: PomodoroViewModeling {
+
+        var delegate: PomodoroViewModelDelegate?
+
+        private(set) var setupInitialStateCallCount = 0
+        private(set) var startCycleCallCount = 0
+
+        func setupInitialState() {
+            setupInitialStateCallCount += 1
+        }
+
+        func startCycle() {
+            startCycleCallCount += 1
+        }
     }
 }

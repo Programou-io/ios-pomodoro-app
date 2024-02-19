@@ -2,6 +2,8 @@ import UIKit
 
 final class PomodoroViewController: UIViewController {
 
+    private var viewModel: PomodoroViewModeling
+
     private lazy var pomodoroTimerCircularProgressIndicatorView =
         CircularProgressIndicator()
 
@@ -26,13 +28,18 @@ final class PomodoroViewController: UIViewController {
         return label
     }()
 
-    private lazy var primaryButton: UIButton = {
+    private(set) lazy var primaryButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .focus
         button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.setTitleColor(.background, for: .normal)
         button.layer.cornerRadius = 48 / 2
+        button.addTarget(
+            self,
+            action: #selector(primaryButtonActionHandler),
+            for: .touchUpInside
+        )
         return button
     }()
 
@@ -42,6 +49,14 @@ final class PomodoroViewController: UIViewController {
         stack.spacing = 30
         return stack
     }()
+
+    init(viewModel: PomodoroViewModeling) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { nil }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,12 +107,17 @@ final class PomodoroViewController: UIViewController {
         cycleLabel.textColor = phaseColor
         primaryButton.backgroundColor = phaseColor
     }
+
+    @objc private func primaryButtonActionHandler() {
+        viewModel.startCycle()
+    }
 }
 
 extension PomodoroViewController: ViewCode {
 
     func configureStyle() {
         view.backgroundColor = .background
+        viewModel.delegate = self
     }
 
     func configureHierarchy() {
@@ -140,5 +160,27 @@ extension PomodoroViewController: ViewCode {
             $0.centerX(reference: view.centerX)
             $0.centerY(reference: view.centerY)
         }
+    }
+}
+
+extension PomodoroViewController: PomodoroViewModelDelegate {
+    func changeTime(viewData: PomodoroTimeViewData) {
+
+    }
+
+    func changeButton(viewData: PomodoroButtonViewData) {
+
+    }
+
+    func changePhase(viewData: PomodoroPhaseViewData) {
+
+    }
+
+    func changeCycles(viewData: PomodoroCyclesViewData) {
+
+    }
+
+    func changePomodoros(viewData: PomodoroDoneViewData) {
+
     }
 }
