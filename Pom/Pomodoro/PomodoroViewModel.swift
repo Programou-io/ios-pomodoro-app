@@ -6,13 +6,29 @@ protocol PomodoroViewModelDelegate {
     func changePomodoros(viewData: PomodoroDoneViewData)
 }
 
-final class PomodoroViewModel {
+protocol PomodoroViewModeling {
+    var delegate: PomodoroViewModelDelegate? { get set }
+    func setupInitialState()
+    func startCycle()
+}
+
+final class PomodoroViewModel: PomodoroViewModeling {
     var delegate: PomodoroViewModelDelegate?
 
     private var pomodoro: Pomodorable
 
     init(pomodoro: Pomodorable) {
         self.pomodoro = pomodoro
+    }
+
+    func setupInitialState() {
+        delegate?.changeTime(
+            viewData: PomodoroTimeViewData(time: "00:25:00", progress: 0.0)
+        )
+        delegate?.changeButton(viewData: PomodoroButtonViewData(title: "iniciar foco"))
+        delegate?.changePhase(viewData: PomodoroPhaseViewData(phase: .focus))
+        delegate?.changeCycles(viewData: PomodoroCyclesViewData(period: 0.0))
+        delegate?.changePomodoros(viewData: PomodoroDoneViewData(pomodoros: "0"))
     }
 
     func startCycle() {

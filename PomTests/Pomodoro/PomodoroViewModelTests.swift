@@ -3,6 +3,44 @@ import XCTest
 @testable import Pom
 
 final class PomodoroViewModelTests: XCTestCase {
+
+    func test() {
+        let env = makeEnviroment()
+
+        env.sut.setupInitialState()
+
+        XCTAssertEqual(
+            env.delegate.changeTimeRecieved,
+            [
+                PomodoroTimeViewData(time: "00:25:00", progress: 0.0)
+            ]
+        )
+        XCTAssertEqual(
+            env.delegate.changeButtonRecieved,
+            [
+                .init(title: "iniciar foco")
+            ]
+        )
+        XCTAssertEqual(
+            env.delegate.changeCyclesRecieved,
+            [
+                .init(period: 0.0)
+            ]
+        )
+        XCTAssertEqual(
+            env.delegate.changePhaseRecieved,
+            [
+                .init(phase: .focus)
+            ]
+        )
+        XCTAssertEqual(
+            env.delegate.changePomodorosRecieved,
+            [
+                .init(pomodoros: "0")
+            ]
+        )
+    }
+
     func test_startCycle_shouldDelegateChangeTimeWithZeroFormatted() {
         let env = makeEnviroment()
         env.sut.startCycle()
